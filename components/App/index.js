@@ -1,8 +1,8 @@
-import App from './App';
-import Container from './Container';
-import * as Navigation from './Navigation';
+export default from './App';
 
-module.exports = {
-  default: App,
-  App, Container, Navigation,
-};
+export App from './App';
+export ConfigProvider from './ConfigProvider';
+export Container from './Container';
+export Navigation from './Navigation';
+export Screen from './Screen';
+export StyleProvider from './StyleProvider';

@@ -1,6 +1,6 @@
-import nativeBase from './native-base';
+import app from './app';
 
-module.exports = {
-  default : module.exports,
-  nativeBase,
-};
+export default module.exports;
+export {
+  app,
+}

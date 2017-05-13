@@ -1,7 +1,3 @@
-import Navigation from './Navigation';
-import Scene from './Scene';
+export default from './Navigation';
 
-module.exports = {
-  default: Navigation,
-  Navigation, Scene,
-};
+export Navigation from './Navigation';

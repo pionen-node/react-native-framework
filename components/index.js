@@ -1,9 +1,5 @@
-import Drawer from './Drawer';
-import Loader from './Loader';
+export default module.exports;
 
-import * as App from './App/index';
-
-module.exports = {
-  default: module.exports,
-  App, Drawer, Loader,
-};
+export App from './App';
+export Drawer from './Drawer';
+export Loader from './Loader';

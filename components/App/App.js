@@ -1,51 +1,44 @@
 import React, { Component, PropTypes } from 'react';
 
-import Drawer from '../Drawer';
-import Navigation from './Navigation/Navigation';
+import config from '../../config';
+import { connectComponent } from '../../support';
+import {
+  ConfigProvider as AppConfigProvider,
+  Navigation as AppNavigation,
+  StyleProvider as AppStyleProvider,
+} from './index';
 
-export default class App extends Component {
+class App extends Component {
   static childContextTypes = {
     app: PropTypes.object.isRequired,
-    config: PropTypes.object.isRequired,
   };
   static propTypes = {
-    config: PropTypes.object.isRequired,
+    config: PropTypes.object,
   };
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      config: props.config,
-    }
-  }
   getChildContext() {
     const app = this;
 
     return {
       app,
-      config: app.config,
     }
   }
   render() {
-    const {theme} = this.config.container;
+    const config = _.merge({}, this.constructor.config, this.props.config);
 
     return (
-      <Drawer
-        renderSidebar={() => this.renderSidebar()}
-        style={{backgroundColor: theme.variables.btnDisabledClr}}>
-        <Navigation />
-      </Drawer>
+      <AppConfigProvider {...{config}}>
+        <AppStyleProvider>
+          {this.renderNavigation()}
+        </AppStyleProvider>
+      </AppConfigProvider>
     );
   }
-  renderSidebar() {
-    return null;
-  }
-  get config() {
-    return this.state.config;
-  }
-  set config(config) {
-    this.setState({
-      config,
-    });
+  renderNavigation() {
+    return <AppNavigation />;
   }
 }
+
+export default connectComponent({
+  config,
+  namespace: 'PionenApp',
+})(App);

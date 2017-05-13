@@ -1,26 +1,29 @@
 import React from 'react';
 
-import { nativeBase } from './themes';
+import { App as AppScreen } from './components/App';
+import { app } from './themes';
 
 export default {
-  container: {
-    theme: {
-      ...nativeBase,
-      //
-    },
-  },
-  navigation: {
-    initialState: {
-      index: 0,
-      routes: [{key: 'home'}],
-    },
-    scene: {
-      router: {
+  App: {
+    Navigation: {
+      screenProps: {
         //
       },
-    }
-  },
-  storage: {
-    sessionKey: 'LookApp:Storage',
+      stackNavigator: {
+        initialRouteName: 'Home',
+        initialRouteParams: {
+          //
+        },
+      },
+      stackRouter: {
+        Home: {
+          screen: AppScreen,
+        }
+      },
+    },
+    storage: {
+      sessionKey: 'PionenApp:Storage',
+    },
+    theme: app,
   },
 };
